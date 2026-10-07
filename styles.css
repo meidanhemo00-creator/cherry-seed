@@ -472,7 +472,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .hero__field,
 .strip__light {
-  background: #010206 url("assets/photos/hero-corridor-duo.webp") 55% 40% / cover no-repeat;
+  background: #010206 url("assets/photos/hero-corridor-duo.webp?v=2") 55% 40% / cover no-repeat;
 }
 .hero__field {
   position: absolute;
