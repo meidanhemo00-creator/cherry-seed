@@ -1328,7 +1328,6 @@ details[open] > .syllabus__body { animation: open 360ms var(--ease-out); }
 
 @media (max-width: 599px) {
   body { font-size: 1rem; }
-  .partner-bar__school,
   .partner-bar__tag { display: none; }
   .partner-bar__text { font-size: 0.75rem; }
   .partner-bar__logo { height: 40px; }

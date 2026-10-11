@@ -1,6 +1,6 @@
 # Cherry Seed
 
-Landing page for Cherry Seed, the entrepreneurship program for Duvdevan alumni, an initiative of Duvdevan Foundation developed with the Adelson School of Entrepreneurship at Reichman University.
+Landing page for Cherry Seed, the entrepreneurship program for Duvdevan alumni, an initiative of Duvdevan Foundation developed in partnership with Reichman University.
 
 Static site: open `index.html` or serve the folder with any static host. No build step.
 
