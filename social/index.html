@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cherry Seed Cohort 02 Instagram Carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Heebo:wght@300..700&display=swap">
+<style>
+  :root {
+    --blue: #2f5bea;
+    --blue-bright: #7b93ff;
+    --steel: #9aa6c8;
+    --muted: rgba(255, 255, 255, 0.66);
+    --rule: rgba(255, 255, 255, 0.16);
+    --sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  }
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #111; }
+  body { font-family: var(--sans); color: #fff; -webkit-font-smoothing: antialiased; }
+  .deck { display: grid; gap: 40px; padding: 40px; justify-content: center; }
+  @media print { .deck { gap: 0; padding: 0; } html, body { background: #000; } }
+
+  .slide {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    isolation: isolate;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    padding: 72px 76px 64px;
+    break-after: page;
+  }
+  .grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size: 90px 90px;
+    background-position: -1px -1px;
+  }
+
+  /* Chrome shared by every slide */
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .logo { height: 58px; width: auto; display: block; }
+  .count { font-family: var(--mono); font-size: 20px; letter-spacing: 0.08em; color: var(--muted); }
+  .count b { color: var(--blue-bright); font-weight: 500; }
+  .foot {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
+  .foot p { font-size: 20px; line-height: 1.35; color: var(--muted); max-width: 640px; }
+  .foot p strong { color: #fff; font-weight: 500; }
+  .foot img { height: 60px; width: auto; }
+  .stages + .foot { border-top: 0; }
+
+  .label { font-family: var(--mono); font-size: 20px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .label b { color: var(--blue-bright); font-weight: 500; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 12px 22px; border: 1px solid rgba(255,255,255,0.24); border-radius: 999px;
+    background: rgba(0,0,0,0.4);
+    font-family: var(--mono); font-size: 20px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .pill i { width: 12px; height: 12px; border-radius: 50%; background: var(--blue-bright); box-shadow: 0 0 14px rgba(123,147,255,0.9); }
+  h1, h2 { font-weight: 500; letter-spacing: -0.05em; }
+  .he { font-family: "Heebo", var(--sans); letter-spacing: -0.01em; direction: rtl; unicode-bidi: isolate; }
+  .he-block { display: inline-block; align-self: flex-start; }
+  .steel { color: var(--steel); }
+
+  .photo { position: absolute; inset: 0; z-index: -3; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .seed { position: absolute; z-index: -1; }
+  .seed canvas { width: 100%; height: 100%; display: block; }
+  .brackets::after {
+    --c: rgba(255,255,255,0.42); --l: 26px; --t: 2px;
+    content: ""; position: absolute; inset: 28px; pointer-events: none; z-index: 5;
+    background:
+      linear-gradient(var(--c),var(--c)) top left / var(--l) var(--t) no-repeat,
+      linear-gradient(var(--c),var(--c)) top left / var(--t) var(--l) no-repeat,
+      linear-gradient(var(--c),var(--c)) top right / var(--l) var(--t) no-repeat,
+      linear-gradient(var(--c),var(--c)) top right / var(--t) var(--l) no-repeat,
+      linear-gradient(var(--c),var(--c)) bottom left / var(--l) var(--t) no-repeat,
+      linear-gradient(var(--c),var(--c)) bottom left / var(--t) var(--l) no-repeat,
+      linear-gradient(var(--c),var(--c)) bottom right / var(--l) var(--t) no-repeat,
+      linear-gradient(var(--c),var(--c)) bottom right / var(--t) var(--l) no-repeat;
+  }
+
+  /* 01 Cover */
+  .s1 .photo img { object-position: 58% 40%; }
+  .s1 .shade { position: absolute; inset: 0; z-index: -2;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0.55) 58%, rgba(0,0,0,0.96) 82%); }
+  .s1 .pill { margin-top: 60px; align-self: flex-start; }
+  .s1 .hook { margin-top: 36px; font-size: 92px; line-height: 1; letter-spacing: -0.055em; font-weight: 500; }
+  .s1 .hook span { display: block; }
+  .s1 .announce { margin-top: auto; }
+  .s1 .announce .label { margin-bottom: 18px; }
+  .s1 .announce h2 { font-size: 116px; line-height: 0.95; letter-spacing: -0.06em; }
+  .s1-he { margin-top: 22px; font-size: 38px; font-weight: 400; color: rgba(255,255,255,0.78); }
+  .s1 .announce .s1-he-open { margin-top: 18px; font-size: 44px; font-weight: 500; color: #fff; display: inline-block; }
+  .s5-he { margin-top: 22px; font-size: 30px; color: rgba(255,255,255,0.8); display: block; width: fit-content; }
+  .s1 .announce p { margin-top: 18px; font-size: 28px; line-height: 1.35; color: rgba(255,255,255,0.88); max-width: 820px; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 32px; border-top: 1px solid var(--rule); }
+  .facts div { padding: 20px 20px 0 0; }
+  .facts div + div { padding-left: 22px; border-left: 1px solid var(--rule); }
+  .facts dt { font-family: var(--mono); font-size: 17px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-bright); }
+  .facts dd { margin-top: 8px; font-size: 25px; line-height: 1.25; }
+
+  /* 02 What it is */
+  .s2 .seed { right: -360px; top: 110px; width: 820px; height: 820px; opacity: 0.85; }
+  .s2 .label { margin-top: 84px; }
+  .s2 h2 { margin-top: 28px; font-size: 104px; line-height: 0.98; }
+  .s2 .intro { margin-top: 34px; font-size: 31px; line-height: 1.4; max-width: 760px; color: rgba(255,255,255,0.9); }
+  .pillars { margin-top: 56px; border-top: 1px solid var(--rule); }
+  .pillars li { list-style: none; display: grid; grid-template-columns: 70px 260px 1fr; align-items: baseline; gap: 20px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+  .pillars span { font-family: var(--mono); font-size: 19px; color: var(--blue-bright); }
+  .pillars h3 { font-size: 46px; font-weight: 500; letter-spacing: -0.045em; }
+  .pillars p { font-size: 24px; line-height: 1.38; color: var(--muted); }
+
+  /* 03 Journey */
+  .s3 .label { margin-top: 64px; }
+  .s3 h2 { margin-top: 28px; font-size: 104px; line-height: 0.98; }
+  .stages { margin-top: 44px; display: grid; gap: 0; border-top: 1px solid var(--rule); }
+  .stage { list-style: none; display: grid; grid-template-columns: 150px 1fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+  .stage .mini { position: relative; width: 150px; height: 150px; border: 1px solid var(--rule); border-radius: 6px;
+    background: radial-gradient(60% 60% at 50% 50%, rgba(47,91,234,0.22), transparent 70%), #02030a; }
+  .stage .mini canvas { width: 100%; height: 100%; display: block; }
+  .stage .num { font-family: var(--mono); font-size: 18px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-bright); }
+  .stage h3 { margin-top: 8px; font-size: 50px; font-weight: 500; letter-spacing: -0.045em; line-height: 1; }
+  .stage p { margin-top: 12px; font-size: 24px; line-height: 1.4; color: var(--muted); }
+
+  /* 04 Showcase */
+  .s4 .media { position: relative; margin: 56px -76px 0; height: 640px; }
+  .s4 .media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
+  .s4 .media::before { display: none; content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.9)); }
+  .s4 .media figcaption { position: absolute; left: 76px; bottom: 34px; z-index: 6; font-size: 22px; line-height: 1.35; color: rgba(255,255,255,0.88); }
+  .s4 .media figcaption span { display: block; font-family: var(--mono); font-size: 17px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 6px; }
+  .s4 .label { margin-top: 52px; }
+  .s4 h2 { margin-top: 24px; font-size: 96px; line-height: 0.98; }
+  .s4 .copy { margin-top: 28px; font-size: 30px; line-height: 1.4; max-width: 860px; color: rgba(255,255,255,0.9); }
+
+  /* 05 Apply */
+  .s5 { background: radial-gradient(60% 50% at 50% 34%, rgba(47,91,234,0.26), transparent 70%), #020309; }
+  .s5 .seed { left: 50%; top: 40px; width: 700px; height: 700px; transform: translateX(-50%); }
+  .s5 .body { margin-top: auto; }
+  .s5 h2 { font-size: 132px; line-height: 0.94; letter-spacing: -0.06em; }
+  .s5 .cta {
+    display: inline-flex; align-items: center; gap: 18px; margin-top: 40px;
+    padding: 26px 40px; border-radius: 4px; background: #fff; color: #000;
+    font-size: 34px; font-weight: 500; letter-spacing: -0.02em;
+  }
+  .s5 .cta i { width: 12px; height: 12px; background: var(--blue); }
+  .s5 .facts { margin-top: 44px; }
+  .photo-img { position: absolute; inset: 0; width: 1080px; height: 1350px; z-index: -3; object-fit: cover; }
+  img.mini { display: block; object-fit: contain; }
+  body { background: #000; }
+  .slide { margin: 0 auto 40px; }
+</style>
+</head>
+<body>
+
+  <!-- 01 COVER -->
+  <section data-document-role="page" class="slide s1 brackets" id="s1">
+    <img class="photo-img" src="assets/bg-s1.jpg" alt="">
+    <div class="top">
+      <img class="logo" src="assets/cherry-seed-logo-white.png" alt="Cherry Seed">
+      <span class="count"><b>01</b> / 05</span>
+    </div>
+    <p class="pill"><i></i>Applications now open</p>
+    <h1 class="hook"><span>You asked.</span><span>You waited.</span><span class="steel">You wondered.</span></h1>
+    <p class="he he-block s1-he">שאלתם. חיכיתם. תהיתם.</p>
+    <div class="announce">
+      <p class="label"><b>Cherry Seed</b> / The second cohort</p>
+      <h2>Cohort 02<br>is open.</h2>
+      <p class="he s1-he-open">המחזור השני של צ׳רי סיד נפתח!</p>
+      <p>The entrepreneurship program exclusively for Duvdevan alumni, developed with Reichman University.</p>
+      <dl class="facts">
+        <div><dt>Who</dt><dd>Duvdevan alumni only</dd></div>
+        <div><dt>Language</dt><dd>Taught in Hebrew</dd></div>
+        <div><dt>Apply</dt><dd>Link in bio</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 02 WHAT IT IS -->
+  <section data-document-role="page" class="slide s2 grid" id="s2">
+    <img class="seed" src="assets/seed-s2.png" alt="">
+    <div class="top">
+      <img class="logo" src="assets/cherry-seed-logo-white.png" alt="Cherry Seed">
+      <span class="count"><b>02</b> / 05</span>
+    </div>
+    <p class="label"><b>01</b> / The program</p>
+    <h2>From battlefield<br><span class="steel">to startup<br>innovation.</span></h2>
+    <p class="intro">An entrepreneurship program exclusively for Duvdevan alumni, combining academic knowledge, practical tools, mentorship, and connections to the startup ecosystem.</p>
+    <ul class="pillars">
+      <li><span>01</span><h3>Knowledge</h3><p>Customer research, business models, product, sales, and fundraising.</p></li>
+      <li><span>02</span><h3>Tools</h3><p>Lean Startup, AI tools, MVP development, and pitching.</p></li>
+      <li><span>03</span><h3>People</h3><p>Mentors, entrepreneurs, investors, and fellow Duvdevan alumni.</p></li>
+    </ul>
+    <div class="foot">
+      <p>Developed with the <strong>Adelson School of Entrepreneurship</strong> at <strong>Reichman University</strong></p>
+      <img src="assets/reichman-adelson-he-white.png" alt="Reichman University, Adelson School of Entrepreneurship">
+    </div>
+  </section>
+
+  <!-- 03 JOURNEY -->
+  <section data-document-role="page" class="slide s3 grid" id="s3">
+    <div class="top">
+      <img class="logo" src="assets/cherry-seed-logo-white.png" alt="Cherry Seed">
+      <span class="count"><b>03</b> / 05</span>
+    </div>
+    <p class="label"><b>02</b> / The journey</p>
+    <h2>How an idea<br><span class="steel">takes shape.</span></h2>
+    <ol class="stages">
+      <li class="stage">
+        <img class="mini" src="assets/seed-st1.png" alt="">
+        <div><p class="num">Stage 01</p><h3>The Foundations</h3><p>Opportunity discovery, ideation with AI, Lean Startup, Business Model Canvas, customers and markets, team building.</p></div>
+      </li>
+      <li class="stage">
+        <img class="mini" src="assets/seed-st2.png" alt="">
+        <div><p class="num">Stage 02</p><h3>Build and Test</h3><p>Form a team, choose an idea, build an MVP, and test it with real customers.</p></div>
+      </li>
+      <li class="stage">
+        <img class="mini" src="assets/seed-st3.png" alt="">
+        <div><p class="num">Stage 03</p><h3>Pre-Acceleration</h3><p>Marketing, UX, sales, legal, fundraising, investor speed dating, and a final venture pitch.</p></div>
+      </li>
+    </ol>
+    <div class="foot">
+      <p>Developed with the <strong>Adelson School of Entrepreneurship</strong> at <strong>Reichman University</strong></p>
+      <img src="assets/reichman-adelson-he-white.png" alt="Reichman University, Adelson School of Entrepreneurship">
+    </div>
+  </section>
+
+  <!-- 04 SHOWCASE -->
+  <section data-document-role="page" class="slide s4 grid" id="s4">
+    <div class="top">
+      <img class="logo" src="assets/cherry-seed-logo-white.png" alt="Cherry Seed">
+      <span class="count"><b>04</b> / 05</span>
+    </div>
+    <figure class="media brackets">
+      <img src="assets/media-s4.jpg" alt="Guy Farache presenting at the Miami Showcase">
+      <figcaption><span>Miami Showcase</span>Guy Farache, CEO of Duvdevan Foundation and founder of Cherry Seed</figcaption>
+    </figure>
+    <p class="label"><b>03</b> / Cohort 01</p>
+    <h2>Miami Showcase<br><span class="steel">May 2026.</span></h2>
+    <p class="copy">Selected teams from the first cohort presented their startups to investors in Miami. Now it is your turn to start building.</p>
+    <div class="foot">
+      <p>An initiative of <strong>Duvdevan Foundation</strong>, in partnership with <strong>Reichman University</strong></p>
+      <img src="assets/reichman-adelson-he-white.png" alt="Reichman University, Adelson School of Entrepreneurship">
+    </div>
+  </section>
+
+  <!-- 05 APPLY -->
+  <section data-document-role="page" class="slide s5 grid" id="s5">
+    <img class="seed" src="assets/seed-s5.png" alt="">
+    <div class="top">
+      <img class="logo" src="assets/cherry-seed-logo-white.png" alt="Cherry Seed">
+      <span class="count"><b>05</b> / 05</span>
+    </div>
+    <div class="body">
+      <p class="label"><b>04</b> / Apply</p>
+      <h2 style="margin-top:24px">What will<br><span class="steel">you build next?</span></h2>
+      <p class="cta"><i></i>Apply now. Link in bio.</p>
+      <p class="he s5-he">ההרשמה למחזור השני פתוחה. הקישור להגשת מועמדות בביו.</p>
+      <dl class="facts">
+        <div><dt>Who</dt><dd>Duvdevan alumni only</dd></div>
+        <div><dt>Language</dt><dd>Taught in Hebrew</dd></div>
+        <div><dt>An initiative of</dt><dd>Duvdevan Foundation</dd></div>
+      </dl>
+    </div>
+    <div class="foot">
+      <p>In partnership with <strong>Reichman University</strong></p>
+      <img src="assets/reichman-adelson-he-white.png" alt="Reichman University, Adelson School of Entrepreneurship">
+    </div>
+  </section>
+
+</body>
+</html>
