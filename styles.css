@@ -227,7 +227,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   text-transform: uppercase;
   color: var(--ice);
 }
-.partner-bar__logo { width: auto; height: 42px; flex: none; }
+.partner-bar__logo { width: auto; height: 48px; flex: none; }
 
 /* ==========================================================================
    Header
@@ -1331,7 +1331,7 @@ details[open] > .syllabus__body { animation: open 360ms var(--ease-out); }
   .partner-bar__school,
   .partner-bar__tag { display: none; }
   .partner-bar__text { font-size: 0.75rem; }
-  .partner-bar__logo { height: 34px; }
+  .partner-bar__logo { height: 40px; }
   .hero { min-height: max(640px, calc(100svh - 56px)); }
   .hero__field,
   .strip__light { background-position: 62% 40%; }
